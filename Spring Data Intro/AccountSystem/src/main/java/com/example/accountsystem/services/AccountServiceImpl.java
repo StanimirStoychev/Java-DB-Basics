@@ -40,19 +40,15 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void depositMoney(BigDecimal money, Long id) {
-        Optional<Account> account = accountRepository.findById(id);
-
-        if (account.isPresent()){
-            throw new NoSuchElementException("Account already exist!");
-        }
+        Account account = accountRepository.findById(id).orElseThrow(NoSuchElementException::new);
 
         if (money.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("Value can't be negative!");
         }
 
-        BigDecimal balance = account.get().getBalance().add(money);
-        account.get().setBalance(balance);
+        BigDecimal balance = account.getBalance().add(money);
+        account.setBalance(balance);
 
-        this.accountRepository.save(account.get());
+        this.accountRepository.save(account);
     }
 }
