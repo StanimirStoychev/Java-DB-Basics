@@ -1,4 +1,4 @@
-package com.example.accountsystem.services;
+package com.example.services;
 
 import java.math.BigDecimal;
 

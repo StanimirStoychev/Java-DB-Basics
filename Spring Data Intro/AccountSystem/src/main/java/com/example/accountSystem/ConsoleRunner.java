@@ -1,14 +1,13 @@
-package com.example.accountsystem;
+package com.example;
 
-import com.example.accountsystem.models.Account;
-import com.example.accountsystem.models.User;
-import com.example.accountsystem.services.AccountService;
-import com.example.accountsystem.services.UserService;
+import com.example.entities.Account;
+import com.example.entities.User;
+import com.example.services.AccountService;
+import com.example.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.HashSet;
 
@@ -26,7 +25,6 @@ public class ConsoleRunner implements CommandLineRunner {
 
 
     @Override
-    @Transactional
     public void run(String... args) throws Exception {
 
         User user = new User("Goshox        ", 20);

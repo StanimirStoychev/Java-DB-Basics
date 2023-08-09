@@ -1,4 +1,4 @@
-package com.example.accountsystem.models;
+package com.example.entities;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "users")
+@MappedSuperclass
 public class User {
 
     @Id
