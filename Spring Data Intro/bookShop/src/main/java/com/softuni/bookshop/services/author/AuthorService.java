@@ -2,6 +2,7 @@ package com.softuni.bookshop.services.author;
 
 import com.softuni.bookshop.domain.entities.Author;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface AuthorService {
@@ -11,4 +12,6 @@ public interface AuthorService {
     boolean isDataSeeded();
 
     Author getRandomAuthor();
+
+    List<Author> getAllByBooksBeforeYear(LocalDate date);
 }

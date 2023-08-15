@@ -44,4 +44,12 @@ public class Book extends BaseEntity {
 
     @ManyToOne
     private Author author;
+
+    public void printTitle() {
+        System.out.println(title);
+    }
+
+    public void printTitleReleaseDateAndCopies() {
+        System.out.println(title + " " + releaseDate + " " + copies);
+    }
 }
