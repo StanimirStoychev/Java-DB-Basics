@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d8a10d5b-28f2-495a-a968-2b2f1fb15785" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Skeleton/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/CommandLineRunnerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/SpringintroApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/model/dto/BookInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/model/entity/AgeRestriction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/model/entity/Author.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/model/entity/BaseEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/model/entity/Book.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/model/entity/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/model/entity/EditionType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/repository/AuthorRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/repository/BookRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/repository/CategoryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/service/AuthorService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/service/BookService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/service/CategoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/service/impl/AuthorServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/service/impl/BookServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/java/com/example/springintro/service/impl/CategoryServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/resources/files/authors.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/resources/files/books.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/main/resources/files/categories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/src/test/java/com/example/springintro/SpringintroApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/CommandLineRunnerImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/SpringintroApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/model/dto/BookInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/model/entity/AgeRestriction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/model/entity/Author.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/model/entity/BaseEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/model/entity/Book.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/model/entity/Category.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/model/entity/EditionType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/repository/AuthorRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/repository/BookRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/repository/CategoryRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/service/AuthorService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/service/BookService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/service/CategoryService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/service/impl/AuthorServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/service/impl/BookServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/com/example/springintro/service/impl/CategoryServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/files/authors.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/files/books.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/files/categories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/AccountSystemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/AccountSystemApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/ConsoleRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/ConsoleRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/entities/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/entities/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/repositories/AccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/repositories/AccountRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/services/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/services/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/services/AccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/services/UserServiceImpl.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2U44voaNYSYuqJQ7B7CSEI2oFip" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Stanimir/Desktop/SoftUni/Java DB Basic/Java-DB-Basics/Spring Data Advanced Querying/books"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="SpringintroApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="books" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.springintro.SpringintroApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d8a10d5b-28f2-495a-a968-2b2f1fb15785" name="Changes" comment="" />
+      <created>1692185753592</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1692185753592</updated>
+      <workItem from="1692185755266" duration="111000" />
+      <workItem from="1692198021248" duration="604000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
