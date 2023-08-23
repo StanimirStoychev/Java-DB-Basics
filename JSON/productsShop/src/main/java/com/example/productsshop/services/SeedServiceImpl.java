@@ -1,7 +1,11 @@
 package com.example.productsshop.services;
 
+import com.example.productsshop.domain.dtos.CategoryImportDTO;
 import com.example.productsshop.domain.dtos.UserImportDTO;
+import com.example.productsshop.domain.entities.Category;
 import com.example.productsshop.domain.entities.User;
+import com.example.productsshop.repositories.CategoryRepository;
+import com.example.productsshop.repositories.ProductRepository;
 import com.example.productsshop.repositories.UserRepository;
 import com.google.gson.Gson;
 import org.modelmapper.ModelMapper;
@@ -13,6 +17,7 @@ import java.io.FileReader;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.example.productsshop.constants.Paths.CATEGORIES_PATH;
 import static com.example.productsshop.constants.Paths.USERS_PATH;
 
 @Service
@@ -21,11 +26,15 @@ public class SeedServiceImpl implements SeedService {
     private final Gson gson;
     private final ModelMapper modelMapper;
     private final UserRepository userRepository;
+    private final CategoryRepository categoryRepository;
+    private final ProductRepository productRepository;
 
     @Autowired
-    public SeedServiceImpl(Gson gson, UserRepository userRepository) {
+    public SeedServiceImpl(Gson gson, UserRepository userRepository, CategoryRepository categoryRepository, ProductRepository productRepository) {
         this.gson = gson;
         this.userRepository = userRepository;
+        this.categoryRepository = categoryRepository;
+        this.productRepository = productRepository;
         this.modelMapper = new ModelMapper();
     }
 
@@ -48,7 +57,15 @@ public class SeedServiceImpl implements SeedService {
     }
 
     @Override
-    public void seedCategories() {
+    public void seedCategories() throws FileNotFoundException {
 
+        if (this.categoryRepository.count() == 0) {
+            FileReader reader = new FileReader(CATEGORIES_PATH.toFile());
+
+            List<Category> categories = Arrays.stream(gson.fromJson(reader, CategoryImportDTO[].class))
+                    .map(categoryImportDTO -> modelMapper.map(categoryImportDTO, Category.class)).toList();
+
+            this.categoryRepository.saveAllAndFlush(categories);
+        }
     }
 }
