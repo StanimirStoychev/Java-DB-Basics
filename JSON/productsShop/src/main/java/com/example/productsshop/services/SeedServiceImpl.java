@@ -1,8 +1,10 @@
 package com.example.productsshop.services;
 
 import com.example.productsshop.domain.dtos.CategoryImportDTO;
+import com.example.productsshop.domain.dtos.ProductImportDTO;
 import com.example.productsshop.domain.dtos.UserImportDTO;
 import com.example.productsshop.domain.entities.Category;
+import com.example.productsshop.domain.entities.Product;
 import com.example.productsshop.domain.entities.User;
 import com.example.productsshop.repositories.CategoryRepository;
 import com.example.productsshop.repositories.ProductRepository;
@@ -14,11 +16,11 @@ import org.springframework.stereotype.Service;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.Arrays;
-import java.util.List;
+import java.math.BigDecimal;
+import java.util.*;
+import java.util.stream.IntStream;
 
-import static com.example.productsshop.constants.Paths.CATEGORIES_PATH;
-import static com.example.productsshop.constants.Paths.USERS_PATH;
+import static com.example.productsshop.constants.Paths.*;
 
 @Service
 public class SeedServiceImpl implements SeedService {
@@ -52,11 +54,6 @@ public class SeedServiceImpl implements SeedService {
     }
 
     @Override
-    public void seedProducts() {
-
-    }
-
-    @Override
     public void seedCategories() throws FileNotFoundException {
 
         if (this.categoryRepository.count() == 0) {
@@ -67,5 +64,67 @@ public class SeedServiceImpl implements SeedService {
 
             this.categoryRepository.saveAllAndFlush(categories);
         }
+    }
+
+    @Override
+    public void seedProducts() throws FileNotFoundException {
+        if (this.productRepository.count() == 0) {
+            FileReader reader = new FileReader(PRODUCTS_PATH.toFile());
+
+            List<Product> products = Arrays.stream(gson.fromJson(reader, ProductImportDTO[].class))
+                    .map(productImportDTO -> modelMapper.map(productImportDTO, Product.class))
+                    .map(this::setRandomBuyer)
+                    .map(this::setRandomSeller)
+                    .map(this::setRandomCategories)
+                    .toList();
+
+            this.productRepository.saveAllAndFlush(products);
+        }
+    }
+
+    private Product setRandomCategories(Product product) {
+        final Random random = new Random();
+        int numberOfCategories = random.nextInt(1, (int) this.categoryRepository.count());
+
+        Set<Category> categories = new HashSet<>();
+
+        IntStream.of(numberOfCategories)
+                .forEach(value -> {
+                    categories.add(this.categoryRepository
+                            .getRandomEntity()
+                            .orElseThrow(NoSuchElementException::new));
+                });
+
+        product.setCategories(categories);
+
+        return product;
+    }
+
+    private Product setRandomSeller(Product product) {
+        User seller = this.userRepository
+                .getRandomEntity()
+                .orElseThrow(NoSuchElementException::new);
+
+        while (product.getBuyer() != null && product.getBuyer().getId().equals(seller.getId())) {
+            seller = this.userRepository
+                    .getRandomEntity()
+                    .orElseThrow(NoSuchElementException::new);
+        }
+
+        product.setSeller(seller);
+
+        return product;
+    }
+
+    private Product setRandomBuyer(Product product) {
+        if(product.getPrice().compareTo(BigDecimal.valueOf(700)) > 0) {
+            final User buyer = this.userRepository
+                    .getRandomEntity()
+                    .orElseThrow(NoSuchElementException::new);
+
+            product.setBuyer(buyer);
+        }
+
+        return product;
     }
 }
