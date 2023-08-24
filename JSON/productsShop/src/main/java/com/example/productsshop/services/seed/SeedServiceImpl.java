@@ -73,9 +73,9 @@ public class SeedServiceImpl implements SeedService {
 
             List<Product> products = Arrays.stream(gson.fromJson(reader, ProductImportDTO[].class))
                     .map(productImportDTO -> modelMapper.map(productImportDTO, Product.class))
+                    .map(this::setRandomCategories)
                     .map(this::setRandomBuyer)
                     .map(this::setRandomSeller)
-                    .map(this::setRandomCategories)
                     .toList();
 
             this.productRepository.saveAllAndFlush(products);
@@ -84,16 +84,23 @@ public class SeedServiceImpl implements SeedService {
 
     private Product setRandomCategories(Product product) {
         final Random random = new Random();
-        int numberOfCategories = random.nextInt(1, (int) this.categoryRepository.count());
+
+        long countOfCategories = random.nextLong(this.categoryRepository.count() - 2);
 
         Set<Category> categories = new HashSet<>();
 
-        IntStream.of(numberOfCategories)
-                .forEach(value -> {
-                    categories.add(this.categoryRepository
-                            .getRandomEntity()
-                            .orElseThrow(NoSuchElementException::new));
-                });
+//        IntStream.range(0, countOfCategories)
+//                .forEach(value -> {
+//                    categories.add(this.categoryRepository
+//                            .getRandomEntity()
+//                            .orElseThrow(NoSuchElementException::new));
+//                });
+
+        for (int i = 0; i < countOfCategories; i++) {
+            categories.add(this.categoryRepository
+                    .getRandomEntity()
+                    .orElseThrow(NoSuchElementException::new));
+        }
 
         product.setCategories(categories);
 
@@ -117,7 +124,7 @@ public class SeedServiceImpl implements SeedService {
     }
 
     private Product setRandomBuyer(Product product) {
-        if(product.getPrice().compareTo(BigDecimal.valueOf(700)) > 0) {
+        if (product.getPrice().compareTo(BigDecimal.valueOf(750)) > 0) {
             final User buyer = this.userRepository
                     .getRandomEntity()
                     .orElseThrow(NoSuchElementException::new);

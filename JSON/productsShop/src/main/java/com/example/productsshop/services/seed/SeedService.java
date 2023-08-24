@@ -12,7 +12,7 @@ public interface SeedService {
 
     default void seedAll() throws FileNotFoundException {
         seedUsers();
-        seedProducts();
         seedCategories();
+        seedProducts();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.productsshop;
 
+import com.example.productsshop.services.UserService;
 import com.example.productsshop.services.product.ProductService;
 import com.example.productsshop.services.seed.SeedService;
 import jakarta.transaction.Transactional;
@@ -14,10 +15,13 @@ public class ConsoleRunner implements CommandLineRunner {
 
     private final ProductService productService;
 
+    private final UserService userService;
+
     @Autowired
-    public ConsoleRunner(SeedService seedService, ProductService productService) {
+    public ConsoleRunner(SeedService seedService, ProductService productService, UserService userService) {
         this.seedService = seedService;
         this.productService = productService;
+        this.userService = userService;
     }
 
     @Override
@@ -26,5 +30,7 @@ public class ConsoleRunner implements CommandLineRunner {
         seedService.seedAll();
 
         this.productService.findAllByPriceBetweenAndBuyerIsNullOrderByPrice();
+
+        this.userService.findAllBySellProductsBuyerIsNotNullOrderBySellProductsBuyerLastName();
     }
 }
