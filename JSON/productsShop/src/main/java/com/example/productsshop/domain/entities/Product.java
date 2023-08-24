@@ -28,9 +28,11 @@ public class Product extends BaseEntity {
     private BigDecimal price;
 
     @ManyToOne
+    @Fetch(FetchMode.JOIN)
     private User buyer;
 
     @ManyToOne
+    @Fetch(FetchMode.JOIN)
     private User seller;
 
     @ManyToMany

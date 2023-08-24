@@ -1,8 +1,8 @@
-package com.example.productsshop.services;
+package com.example.productsshop.services.seed;
 
-import com.example.productsshop.domain.dtos.CategoryImportDTO;
-import com.example.productsshop.domain.dtos.ProductImportDTO;
-import com.example.productsshop.domain.dtos.UserImportDTO;
+import com.example.productsshop.domain.dtos.category.CategoryImportDTO;
+import com.example.productsshop.domain.dtos.product.ProductImportDTO;
+import com.example.productsshop.domain.dtos.user.UserImportDTO;
 import com.example.productsshop.domain.entities.Category;
 import com.example.productsshop.domain.entities.Product;
 import com.example.productsshop.domain.entities.User;

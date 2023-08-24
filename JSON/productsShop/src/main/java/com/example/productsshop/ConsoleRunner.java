@@ -1,6 +1,8 @@
 package com.example.productsshop;
 
-import com.example.productsshop.services.SeedService;
+import com.example.productsshop.services.product.ProductService;
+import com.example.productsshop.services.seed.SeedService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -10,13 +12,19 @@ public class ConsoleRunner implements CommandLineRunner {
 
     private final SeedService seedService;
 
+    private final ProductService productService;
+
     @Autowired
-    public ConsoleRunner(SeedService seedService) {
+    public ConsoleRunner(SeedService seedService, ProductService productService) {
         this.seedService = seedService;
+        this.productService = productService;
     }
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         seedService.seedAll();
+
+        this.productService.findAllByPriceBetweenAndBuyerIsNullOrderByPrice();
     }
 }

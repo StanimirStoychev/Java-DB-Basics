@@ -1,4 +1,4 @@
-package com.example.productsshop.domain.dtos;
+package com.example.productsshop.domain.dtos.category;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,11 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserImportDTO {
+public class CategoryImportDTO {
 
-    private String firstName;
-
-    private String lastName;
-
-    private Integer age;
+    private String name;
 }

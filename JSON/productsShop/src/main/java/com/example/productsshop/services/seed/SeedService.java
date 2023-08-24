@@ -1,4 +1,4 @@
-package com.example.productsshop.services;
+package com.example.productsshop.services.seed;
 
 import java.io.FileNotFoundException;
 
