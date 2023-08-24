@@ -1,6 +1,7 @@
 package com.example.productsshop;
 
-import com.example.productsshop.services.UserService;
+import com.example.productsshop.services.category.CategoryService;
+import com.example.productsshop.services.user.UserService;
 import com.example.productsshop.services.product.ProductService;
 import com.example.productsshop.services.seed.SeedService;
 import jakarta.transaction.Transactional;
@@ -17,11 +18,14 @@ public class ConsoleRunner implements CommandLineRunner {
 
     private final UserService userService;
 
+    private final CategoryService categoryService;
+
     @Autowired
-    public ConsoleRunner(SeedService seedService, ProductService productService, UserService userService) {
+    public ConsoleRunner(SeedService seedService, ProductService productService, UserService userService, CategoryService categoryService) {
         this.seedService = seedService;
         this.productService = productService;
         this.userService = userService;
+        this.categoryService = categoryService;
     }
 
     @Override
@@ -29,8 +33,10 @@ public class ConsoleRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         seedService.seedAll();
 
-        this.productService.findAllByPriceBetweenAndBuyerIsNullOrderByPrice();
+//        this.productService.findAllByPriceBetweenAndBuyerIsNullOrderByPrice();
 
-        this.userService.findAllBySellProductsBuyerIsNotNullOrderBySellProductsBuyerLastName();
+//        this.userService.findAllBySellProductsBuyerIsNotNullOrderBySellProductsBuyerLastName();
+
+        this.categoryService.getCategorySummary();
     }
 }

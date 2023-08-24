@@ -1,4 +1,4 @@
-package com.example.productsshop.services;
+package com.example.productsshop.services.user;
 
 import com.example.productsshop.domain.dtos.user.UserWithSoldProductsDTO;
 
