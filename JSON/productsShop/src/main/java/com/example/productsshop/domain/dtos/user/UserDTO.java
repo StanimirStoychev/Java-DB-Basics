@@ -1,19 +1,15 @@
 package com.example.productsshop.domain.dtos.user;
 
-import com.example.productsshop.domain.entities.Product;
-import com.example.productsshop.domain.entities.User;
-import jakarta.persistence.Column;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.Size;
+import com.example.productsshop.domain.dtos.product.ProductBasicInfo;
+import com.example.productsshop.domain.dtos.product.ProductDTO;
+import com.example.productsshop.domain.dtos.product.ProductsSoldWithCountDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -27,13 +23,30 @@ public class UserDTO {
 
     private Integer age;
 
-    private Set<Product> sellProducts;
+    private Set<ProductDTO> sellProducts;
 
-    private Set<Product> boughtProducts;
+    private Set<ProductDTO> boughtProducts;
 
-    private Set<User> friends;
+    private Set<UserDTO> friends;
 
     public String getFullName() {
         return firstName + " " + lastName;
     }
+
+    public ProductBasicInfo toProductBasicInfo(ProductDTO productDTO) {
+        return new ProductBasicInfo(productDTO.getName(), productDTO.getPrice());
+    }
+
+    public ProductsSoldWithCountDTO toProductsSoldWithCountDTO() {
+        return new ProductsSoldWithCountDTO(sellProducts
+                .stream()
+                .map(this::toProductBasicInfo)
+                .collect(Collectors.toList()));
+    }
+
+    public UserWithProductsDTO toUserWithProductsDTO() {
+        return new UserWithProductsDTO(firstName, lastName, age, toProductsSoldWithCountDTO());
+    }
+
+
 }
