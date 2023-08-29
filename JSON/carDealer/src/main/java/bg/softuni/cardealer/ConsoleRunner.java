@@ -24,6 +24,7 @@ public class ConsoleRunner implements CommandLineRunner {
         this.seedService.seedParts();
         this.seedService.seedCars();
         this.seedService.seedCustomers();
+        this.seedService.seedSales();
 //        this.seedService.seedAll();
     }
 }

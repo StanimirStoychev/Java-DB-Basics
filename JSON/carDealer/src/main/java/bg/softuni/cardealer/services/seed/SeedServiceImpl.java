@@ -4,15 +4,10 @@ import bg.softuni.cardealer.domain.dtos.car.CarImportDTO;
 import bg.softuni.cardealer.domain.dtos.customer.CustomerDTO;
 import bg.softuni.cardealer.domain.dtos.part.PartImportDTO;
 import bg.softuni.cardealer.domain.dtos.supplier.SupplierDTO;
-import bg.softuni.cardealer.domain.entities.Car;
-import bg.softuni.cardealer.domain.entities.Customer;
-import bg.softuni.cardealer.domain.entities.Part;
-import bg.softuni.cardealer.domain.entities.Supplier;
-import bg.softuni.cardealer.repositories.CarRepository;
-import bg.softuni.cardealer.repositories.CustomerRepository;
-import bg.softuni.cardealer.repositories.PartRepository;
-import bg.softuni.cardealer.repositories.SupplierRepository;
+import bg.softuni.cardealer.domain.entities.*;
+import bg.softuni.cardealer.repositories.*;
 import com.google.gson.Gson;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,16 +26,18 @@ public class SeedServiceImpl implements SeedService {
 
     private final CarRepository carRepository;
     private final CustomerRepository customerRepository;
+    private final SaleRepository saleRepository;
     private final Gson gson;
 
     private final ModelMapper modelMapper;
 
     @Autowired
-    public SeedServiceImpl(SupplierRepository supplierRepository, PartRepository partRepository, CarRepository carRepository, CustomerRepository customerRepository, Gson gson, ModelMapper modelMapper) {
+    public SeedServiceImpl(SupplierRepository supplierRepository, PartRepository partRepository, CarRepository carRepository, CustomerRepository customerRepository, SaleRepository saleRepository, Gson gson, ModelMapper modelMapper) {
         this.supplierRepository = supplierRepository;
         this.partRepository = partRepository;
         this.carRepository = carRepository;
         this.customerRepository = customerRepository;
+        this.saleRepository = saleRepository;
         this.gson = gson;
         this.modelMapper = modelMapper;
     }
@@ -120,7 +117,21 @@ public class SeedServiceImpl implements SeedService {
     }
 
     @Override
+    @Transactional
     public void seedSales() {
+        if (this.saleRepository.count() == 0) {
 
+            final Random random = new Random();
+
+            for (int i = 0; i < 50; i++) {
+                Car car = this.carRepository.getRandomEntity();
+                Customer customer = this.customerRepository.getRandomEntity();
+                int discount = random.nextInt(1, 11) * 5;
+
+                Sale sale = new Sale(car, customer, discount);
+
+                this.saleRepository.saveAndFlush(sale);
+            }
+        }
     }
 }

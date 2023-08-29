@@ -16,11 +16,11 @@ import org.hibernate.annotations.FetchMode;
 @Table(name = "sales")
 public class Sale extends BaseEntity {
 
-    @OneToOne
+    @OneToOne(targetEntity = Car.class)
     @Fetch(FetchMode.JOIN)
     private Car car;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Customer.class)
     @Fetch(FetchMode.JOIN)
     private Customer customer;
 
