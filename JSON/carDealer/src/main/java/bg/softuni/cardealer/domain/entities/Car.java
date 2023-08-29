@@ -1,21 +1,17 @@
 package bg.softuni.cardealer.domain.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "cars")
@@ -28,9 +24,13 @@ public class Car extends BaseEntity {
     private String model;
 
     @Column(name = "travelled_distance")
-    private Integer travelledDistance;
+    private Long travelledDistance;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = Part.class, cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
-    private List<Part> parts;
+    private Set<Part> parts;
+
+    public Car() {
+        this.parts = new HashSet<>();
+    }
 }
