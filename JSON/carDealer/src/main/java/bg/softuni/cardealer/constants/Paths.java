@@ -18,4 +18,6 @@ public enum Paths {
             Path.of("src", "main", "resources", "output", "ordered-customers.json");
     public static final Path TOYOTA_CARS_OUTPUT =
             Path.of("src", "main", "resources", "output", "toyota-cars.json");
+    public static final Path LOCAL_SUPPLIERS_OUTPUT =
+            Path.of("src", "main", "resources", "output", "local-suppliers.json");
 }
