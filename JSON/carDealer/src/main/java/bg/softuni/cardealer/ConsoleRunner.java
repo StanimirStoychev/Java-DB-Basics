@@ -33,6 +33,8 @@ public class ConsoleRunner implements CommandLineRunner {
 //        this.customerService.getOrderedCustomers();
 //        this.carService.getAllToyotaCarsOrdered();
 //        this.supplierService.getAllSuppliersWhoNotImport();
+//        this.carService.getAllCarsWithParts();
+
 
     }
 }

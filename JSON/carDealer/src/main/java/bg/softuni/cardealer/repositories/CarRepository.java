@@ -15,4 +15,6 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     Car getRandomEntity();
 
     Optional<List<Car>> findAllByMakeOrderByModelAscTravelledDistanceDesc(String make);
+
+    Optional<List<Car>> findAllByIdGreaterThan(Long id);
 }
