@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,7 +22,7 @@ public class Customer extends BaseEntity {
     private String name;
 
     @Column(name = "date_of_birth")
-    private String birthDate;
+    private LocalDateTime birthDate;
 
     @Column(name = "is_young_driver")
     private Boolean isYoungDriver;
