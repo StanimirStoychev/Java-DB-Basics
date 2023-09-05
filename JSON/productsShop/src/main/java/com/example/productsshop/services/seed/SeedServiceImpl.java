@@ -1,6 +1,7 @@
 package com.example.productsshop.services.seed;
 
 import com.example.productsshop.domain.dtos.category.CategoryImportDTO;
+import com.example.productsshop.domain.dtos.category.wrappers.CategoriesWrapperDTO;
 import com.example.productsshop.domain.dtos.product.ProductImportDTO;
 import com.example.productsshop.domain.dtos.user.UserImportDTO;
 import com.example.productsshop.domain.dtos.user.wrappers.UsersWrapperDTO;
@@ -68,13 +69,25 @@ public class SeedServiceImpl implements SeedService {
     }
 
     @Override
-    public void seedCategories() throws FileNotFoundException {
+    public void seedCategories() throws FileNotFoundException, JAXBException {
 
         if (this.categoryRepository.count() == 0) {
-            FileReader reader = new FileReader(CATEGORIES_JSON_PATH.toFile());
+//            FileReader reader = new FileReader(CATEGORIES_JSON_PATH.toFile());
 
-            List<Category> categories = Arrays.stream(gson.fromJson(reader, CategoryImportDTO[].class))
-                    .map(categoryImportDTO -> modelMapper.map(categoryImportDTO, Category.class)).toList();
+//            List<Category> categories = Arrays.stream(gson.fromJson(reader, CategoryImportDTO[].class))
+//                    .map(categoryImportDTO -> modelMapper.map(categoryImportDTO, Category.class)).toList();
+
+            FileReader reader = new FileReader(CATEGORIES_XML_PATH.toFile());
+
+            JAXBContext context = JAXBContext.newInstance(CategoriesWrapperDTO.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+
+            CategoriesWrapperDTO categoriesWrapperDTO = (CategoriesWrapperDTO) unmarshaller.unmarshal(reader);
+            List<Category> categories = categoriesWrapperDTO
+                    .getCategories()
+                    .stream()
+                    .map(categoryImportDTO -> modelMapper.map(categoryImportDTO, Category.class))
+                    .toList();
 
             this.categoryRepository.saveAllAndFlush(categories);
         }
