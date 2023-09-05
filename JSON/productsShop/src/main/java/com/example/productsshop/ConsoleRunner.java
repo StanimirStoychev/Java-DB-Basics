@@ -39,6 +39,6 @@ public class ConsoleRunner implements CommandLineRunner {
 
 //        this.categoryService.getCategorySummary();
 
-        this.userService.usersAndProducts();
+//        this.userService.usersAndProducts();
     }
 }

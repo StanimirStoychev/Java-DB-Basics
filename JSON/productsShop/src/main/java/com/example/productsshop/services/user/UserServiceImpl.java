@@ -3,7 +3,7 @@ package com.example.productsshop.services.user;
 import com.example.productsshop.domain.dtos.user.UserDTO;
 import com.example.productsshop.domain.dtos.user.UserWithProductsDTO;
 import com.example.productsshop.domain.dtos.user.UserWithSoldProductsDTO;
-import com.example.productsshop.domain.dtos.user.UsersWithProductsWrapperDTO;
+import com.example.productsshop.domain.dtos.user.wrappers.UsersWithProductsWrapperDTO;
 import com.example.productsshop.repositories.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

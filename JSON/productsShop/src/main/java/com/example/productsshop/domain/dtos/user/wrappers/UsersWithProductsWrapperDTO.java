@@ -1,5 +1,6 @@
-package com.example.productsshop.domain.dtos.user;
+package com.example.productsshop.domain.dtos.user.wrappers;
 
+import com.example.productsshop.domain.dtos.user.UserWithProductsDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
