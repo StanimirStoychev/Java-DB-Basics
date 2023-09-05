@@ -3,6 +3,7 @@ package com.example.productsshop.services.seed;
 import com.example.productsshop.domain.dtos.category.CategoryImportDTO;
 import com.example.productsshop.domain.dtos.category.wrappers.CategoriesWrapperDTO;
 import com.example.productsshop.domain.dtos.product.ProductImportDTO;
+import com.example.productsshop.domain.dtos.product.wrappers.ProductsWrapperDTO;
 import com.example.productsshop.domain.dtos.user.UserImportDTO;
 import com.example.productsshop.domain.dtos.user.wrappers.UsersWrapperDTO;
 import com.example.productsshop.domain.entities.Category;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.math.BigDecimal;
@@ -94,12 +96,27 @@ public class SeedServiceImpl implements SeedService {
     }
 
     @Override
-    public void seedProducts() throws FileNotFoundException {
+    public void seedProducts() throws FileNotFoundException, JAXBException {
         if (this.productRepository.count() == 0) {
-            FileReader reader = new FileReader(PRODUCTS_JSON_PATH.toFile());
+//            FileReader reader = new FileReader(PRODUCTS_JSON_PATH.toFile());
 
-            List<Product> products = Arrays.stream(gson.fromJson(reader, ProductImportDTO[].class))
-                    .map(productImportDTO -> modelMapper.map(productImportDTO, Product.class))
+//            List<Product> products = Arrays.stream(gson.fromJson(reader, ProductImportDTO[].class))
+//                    .map(productImportDTO -> modelMapper.map(productImportDTO, Product.class))
+//                    .map(this::setRandomCategories)
+//                    .map(this::setRandomBuyer)
+//                    .map(this::setRandomSeller)
+//                    .toList();
+
+            FileReader reader = new FileReader(PRODUCTS_XML_PATH.toFile());
+
+            JAXBContext context = JAXBContext.newInstance(ProductsWrapperDTO.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+
+            ProductsWrapperDTO productsWrapperDTO = (ProductsWrapperDTO) unmarshaller.unmarshal(reader);
+            List<Product> products = productsWrapperDTO
+                    .getProducts()
+                    .stream()
+                    .map(productBasicInfo -> modelMapper.map(productBasicInfo, Product.class))
                     .map(this::setRandomCategories)
                     .map(this::setRandomBuyer)
                     .map(this::setRandomSeller)
