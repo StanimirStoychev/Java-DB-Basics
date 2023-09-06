@@ -1,6 +1,7 @@
 package com.example.productsshop.domain.dtos.product.wrappers;
 
 import com.example.productsshop.domain.dtos.product.ProductBasicInfo;
+import com.example.productsshop.domain.dtos.product.ProductExportXMLDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,5 +22,5 @@ import java.util.List;
 public class ProductsWrapperDTO {
 
     @XmlElement(name = "product")
-    private List<ProductBasicInfo> products;
+    private List<ProductExportXMLDTO> products;
 }

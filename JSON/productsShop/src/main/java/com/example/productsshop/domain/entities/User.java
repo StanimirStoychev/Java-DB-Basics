@@ -39,4 +39,12 @@ public class User extends BaseEntity {
 
     @ManyToMany
     private Set<User> friends;
+
+    public String getFullName() {
+        if (firstName == null) {
+            return getLastName();
+        }
+
+        return getFirstName() + " " + getLastName();
+    }
 }

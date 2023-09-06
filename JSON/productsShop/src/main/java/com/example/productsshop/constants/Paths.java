@@ -20,4 +20,13 @@ public enum Paths {
             Path.of("src/main/resources/output/json/categories-by-products.json");
     public static final Path USERS_WITH_PRODUCTS_OUTPUT_PATH =
             Path.of("src/main/resources/output/json/users-and-products.json");
+
+    public static final Path PRODUCTS_IN_RANGE_XML_OUTPUT_PATH =
+            Path.of("src/main/resources/output/xml/products-in-range.xml");
+    public static final Path USER_SOLD_PRODUCTS_XML_OUTPUT_PATH =
+            Path.of("src/main/resources/output/xml/users-sold-products.xml");
+    public static final Path CATEGORIES_BY_PRODUCTS_XML_OUTPUT_PATH =
+            Path.of("src/main/resources/output/xml/categories-by-products.xml");
+    public static final Path USERS_WITH_PRODUCTS_XML_OUTPUT_PATH =
+            Path.of("src/main/resources/output/xml/users-and-products.xml");
 }
