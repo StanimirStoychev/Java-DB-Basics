@@ -40,7 +40,8 @@ public class ConsoleRunner implements CommandLineRunner {
 
 //        this.userService.writeUsersWithSoldProducts();
 
-        this.categoryService.writeCategorySummary();
+//        this.categoryService.writeCategorySummary();
 
+        this.userService.writeUsersAndProducts();
     }
 }

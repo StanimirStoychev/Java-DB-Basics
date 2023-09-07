@@ -11,5 +11,5 @@ public interface UserService {
 
     List<UserWithSoldProductsDTO> writeUsersWithSoldProducts() throws IOException, JAXBException;
 
-    UsersWithProductsWrapperDTO usersAndProducts() throws IOException;
+    UsersWithProductsWrapperDTO writeUsersAndProducts() throws IOException, JAXBException;
 }

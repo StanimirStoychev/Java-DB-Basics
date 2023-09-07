@@ -5,15 +5,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@XmlRootElement(name = "users")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class UsersWithProductsWrapperDTO {
 
+    @XmlAttribute(name = "count")
     private Integer usersCount;
 
+    @XmlElement(name = "user")
     private List<UserWithProductsDTO> users;
 
     public UsersWithProductsWrapperDTO(List<UserWithProductsDTO> users) {
