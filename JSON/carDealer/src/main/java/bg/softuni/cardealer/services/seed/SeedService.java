@@ -11,7 +11,7 @@ public interface SeedService {
 
     void seedCars() throws FileNotFoundException, JAXBException;
 
-    void seedCustomers() throws FileNotFoundException;
+    void seedCustomers() throws FileNotFoundException, JAXBException;
 
     void seedSales();
 
@@ -19,7 +19,7 @@ public interface SeedService {
         seedSuppliers();
         seedParts();
         seedCars();
-//        seedCustomers();
+        seedCustomers();
 //        seedSales();
     }
 }

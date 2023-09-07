@@ -1,25 +1,28 @@
 package bg.softuni.cardealer.services.seed;
 
-import bg.softuni.cardealer.domain.dtos.car.CarImportDTO;
 import bg.softuni.cardealer.domain.dtos.car.wrappers.CarsImportWrapperDTO;
-import bg.softuni.cardealer.domain.dtos.customer.CustomerDTO;
-import bg.softuni.cardealer.domain.dtos.part.PartImportDTO;
+import bg.softuni.cardealer.domain.dtos.customer.CustomerImportDTO;
+import bg.softuni.cardealer.domain.dtos.customer.wrappers.CustomersImportWrapperDTO;
 import bg.softuni.cardealer.domain.dtos.part.wrappers.PartImportWrapperDTO;
-import bg.softuni.cardealer.domain.dtos.supplier.SupplierImportDTO;
 import bg.softuni.cardealer.domain.dtos.supplier.wrappers.SuppliersWrapperDTO;
 import bg.softuni.cardealer.domain.entities.*;
 import bg.softuni.cardealer.repositories.*;
 import com.google.gson.Gson;
 import jakarta.transaction.Transactional;
+import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static bg.softuni.cardealer.constants.Paths.*;
@@ -46,6 +49,12 @@ public class SeedServiceImpl implements SeedService {
         this.saleRepository = saleRepository;
         this.gson = gson;
         this.modelMapper = modelMapper;
+
+        Converter<LocalDateTime, String> toDateToString =
+                ctx -> DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(ctx.getSource());
+
+        modelMapper.createTypeMap(CustomerImportDTO.class, Customer.class)
+                .addMapping(CustomerImportDTO::getBirthDate, Customer::setBirthDate);
     }
 
     @Override
@@ -147,12 +156,23 @@ public class SeedServiceImpl implements SeedService {
     }
 
     @Override
-    public void seedCustomers() throws FileNotFoundException {
+    public void seedCustomers() throws FileNotFoundException, JAXBException {
         if (this.customerRepository.count() == 0) {
-            FileReader reader = new FileReader(CUSTOMER_INPUT_PATH.toFile());
+//            FileReader reader = new FileReader(CUSTOMER_INPUT_PATH.toFile());
+//
+//            List<Customer> customers = Arrays.stream(gson.fromJson(reader, CustomerImportDTO[].class))
+//                    .map(customerDTO -> modelMapper.map(customerDTO, Customer.class))
+//                    .toList();
 
-            List<Customer> customers = Arrays.stream(gson.fromJson(reader, CustomerDTO[].class))
-                    .map(customerDTO -> modelMapper.map(customerDTO, Customer.class))
+            FileReader reader = new FileReader(CUSTOMER_INPUT_XML_PATH.toFile());
+            JAXBContext context = JAXBContext.newInstance(CustomersImportWrapperDTO.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+
+            CustomersImportWrapperDTO wrapperDTO = (CustomersImportWrapperDTO) unmarshaller.unmarshal(reader);
+
+            List<Customer> customers = wrapperDTO.getCustomers()
+                    .stream()
+                    .map(customerImportDTO -> modelMapper.map(customerImportDTO, Customer.class))
                     .toList();
 
             this.customerRepository.saveAllAndFlush(customers);

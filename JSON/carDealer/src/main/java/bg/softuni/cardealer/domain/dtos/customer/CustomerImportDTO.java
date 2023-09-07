@@ -5,17 +5,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.xml.bind.annotation.*;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerDTO {
+@XmlRootElement(name = "customer")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class CustomerImportDTO {
 
+    @XmlAttribute
     private String name;
 
-    private LocalDateTime birthDate;
+    @XmlElement(name = "birth-date")
+    private String birthDate;
 
+    @XmlElement(name = "is-young-driver")
     private Boolean isYoungDriver;
 }
