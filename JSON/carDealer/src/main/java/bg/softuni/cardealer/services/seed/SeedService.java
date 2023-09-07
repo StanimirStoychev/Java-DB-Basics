@@ -9,7 +9,7 @@ public interface SeedService {
 
     void seedParts() throws FileNotFoundException, JAXBException;
 
-    void seedCars() throws FileNotFoundException;
+    void seedCars() throws FileNotFoundException, JAXBException;
 
     void seedCustomers() throws FileNotFoundException;
 
@@ -18,7 +18,7 @@ public interface SeedService {
     default void seedAll() throws FileNotFoundException, JAXBException {
         seedSuppliers();
         seedParts();
-//        seedCars();
+        seedCars();
 //        seedCustomers();
 //        seedSales();
     }

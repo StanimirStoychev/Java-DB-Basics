@@ -1,6 +1,7 @@
 package bg.softuni.cardealer.services.seed;
 
 import bg.softuni.cardealer.domain.dtos.car.CarImportDTO;
+import bg.softuni.cardealer.domain.dtos.car.wrappers.CarsImportWrapperDTO;
 import bg.softuni.cardealer.domain.dtos.customer.CustomerDTO;
 import bg.softuni.cardealer.domain.dtos.part.PartImportDTO;
 import bg.softuni.cardealer.domain.dtos.part.wrappers.PartImportWrapperDTO;
@@ -99,7 +100,7 @@ public class SeedServiceImpl implements SeedService {
     }
 
     @Override
-    public void seedCars() throws FileNotFoundException {
+    public void seedCars() throws FileNotFoundException, JAXBException {
         if (this.carRepository.count() == 0) {
 //            FileReader reader = new FileReader(CAR_INPUT_PATH.toFile());
 //
@@ -109,7 +110,16 @@ public class SeedServiceImpl implements SeedService {
 //                    .toList();
 
             FileReader reader = new FileReader(CAR_INPUT_XML_PATH.toFile());
-            JAXBContext context = JAXBContext.newInstance()
+            JAXBContext context = JAXBContext.newInstance(CarsImportWrapperDTO.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+
+            CarsImportWrapperDTO carsImportWrapperDTO = (CarsImportWrapperDTO) unmarshaller.unmarshal(reader);
+
+            List<Car> cars = carsImportWrapperDTO.getCars()
+                    .stream()
+                    .map(carImportDTO -> modelMapper.map(carImportDTO, Car.class))
+                    .map(this::setRandomParts)
+                    .toList();
 
             this.carRepository.saveAllAndFlush(cars);
         }
