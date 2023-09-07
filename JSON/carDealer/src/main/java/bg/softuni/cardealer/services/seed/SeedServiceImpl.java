@@ -3,6 +3,7 @@ package bg.softuni.cardealer.services.seed;
 import bg.softuni.cardealer.domain.dtos.car.CarImportDTO;
 import bg.softuni.cardealer.domain.dtos.customer.CustomerDTO;
 import bg.softuni.cardealer.domain.dtos.part.PartImportDTO;
+import bg.softuni.cardealer.domain.dtos.part.wrappers.PartImportWrapperDTO;
 import bg.softuni.cardealer.domain.dtos.supplier.SupplierImportDTO;
 import bg.softuni.cardealer.domain.dtos.supplier.wrappers.SuppliersWrapperDTO;
 import bg.softuni.cardealer.domain.entities.*;
@@ -71,11 +72,24 @@ public class SeedServiceImpl implements SeedService {
     }
 
     @Override
-    public void seedParts() throws FileNotFoundException {
+    public void seedParts() throws FileNotFoundException, JAXBException {
         if (this.partRepository.count() == 0) {
-            FileReader reader = new FileReader(PARTS_INPUT_PATH.toFile());
+//            FileReader reader = new FileReader(PARTS_INPUT_PATH.toFile());
+//
+//            List<Part> parts = Arrays.stream(gson.fromJson(reader, PartImportDTO[].class))
+//                    .map(partImportDTO -> modelMapper.map(partImportDTO, Part.class))
+//                    .toList();
+//            parts.forEach(part -> part.setSupplier(this.supplierRepository.getRandomEntity()));
 
-            List<Part> parts = Arrays.stream(gson.fromJson(reader, PartImportDTO[].class))
+            FileReader reader = new FileReader(PARTS_INPUT_XML_PATH.toFile());
+
+            JAXBContext context = JAXBContext.newInstance(PartImportWrapperDTO.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+
+            PartImportWrapperDTO partImportWrapperDTO = (PartImportWrapperDTO) unmarshaller.unmarshal(reader);
+
+            List<Part> parts = partImportWrapperDTO.getParts()
+                    .stream()
                     .map(partImportDTO -> modelMapper.map(partImportDTO, Part.class))
                     .toList();
             parts.forEach(part -> part.setSupplier(this.supplierRepository.getRandomEntity()));
@@ -87,12 +101,15 @@ public class SeedServiceImpl implements SeedService {
     @Override
     public void seedCars() throws FileNotFoundException {
         if (this.carRepository.count() == 0) {
-            FileReader reader = new FileReader(CAR_INPUT_PATH.toFile());
+//            FileReader reader = new FileReader(CAR_INPUT_PATH.toFile());
+//
+//            List<Car> cars = Arrays.stream(gson.fromJson(reader, CarImportDTO[].class))
+//                    .map(carImportDTO -> modelMapper.map(carImportDTO, Car.class))
+//                    .map(this::setRandomParts)
+//                    .toList();
 
-            List<Car> cars = Arrays.stream(gson.fromJson(reader, CarImportDTO[].class))
-                    .map(carImportDTO -> modelMapper.map(carImportDTO, Car.class))
-                    .map(this::setRandomParts)
-                    .toList();
+            FileReader reader = new FileReader(CAR_INPUT_XML_PATH.toFile());
+            JAXBContext context = JAXBContext.newInstance()
 
             this.carRepository.saveAllAndFlush(cars);
         }
@@ -101,7 +118,7 @@ public class SeedServiceImpl implements SeedService {
     private Car setRandomParts(Car car) {
         final Random random = new Random();
 
-        int countOfParts = random.nextInt(3, 6);
+        int countOfParts = random.nextInt(10, 21);
 
         Set<Part> parts = new HashSet<>();
 
