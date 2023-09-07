@@ -34,12 +34,13 @@ public class ConsoleRunner implements CommandLineRunner {
 
 //        seedService.seedAll();
 
-//        this.categoryService.getCategorySummary();
-
 //        this.userService.usersAndProducts();
 
 //        this.productService.writeProductsInRange();
 
-        this.userService.writeUsersWithSoldProducts();
+//        this.userService.writeUsersWithSoldProducts();
+
+        this.categoryService.writeCategorySummary();
+
     }
 }
