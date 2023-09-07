@@ -31,16 +31,15 @@ public class ConsoleRunner implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) throws Exception {
-        seedService.seedAll();
 
-//        this.productService.findAllByPriceBetweenAndBuyerIsNullOrderByPrice();
-
-//        this.userService.findAllBySellProductsBuyerIsNotNullOrderBySellProductsBuyerLastName();
+//        seedService.seedAll();
 
 //        this.categoryService.getCategorySummary();
 
 //        this.userService.usersAndProducts();
 
-        this.productService.writeProductsInRange();
+//        this.productService.writeProductsInRange();
+
+        this.userService.writeUsersWithSoldProducts();
     }
 }
