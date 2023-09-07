@@ -29,7 +29,7 @@ public class ConsoleRunner implements CommandLineRunner {
     @Transactional
     public void run(String... args) throws Exception {
 
-//        this.seedService.seedAll();
+        this.seedService.seedAll();
 //        this.customerService.getOrderedCustomers();
 //        this.carService.getAllToyotaCarsOrdered();
 //        this.supplierService.getAllSuppliersWhoNotImport();

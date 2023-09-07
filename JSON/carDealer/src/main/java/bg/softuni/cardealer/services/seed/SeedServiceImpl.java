@@ -3,7 +3,8 @@ package bg.softuni.cardealer.services.seed;
 import bg.softuni.cardealer.domain.dtos.car.CarImportDTO;
 import bg.softuni.cardealer.domain.dtos.customer.CustomerDTO;
 import bg.softuni.cardealer.domain.dtos.part.PartImportDTO;
-import bg.softuni.cardealer.domain.dtos.supplier.SupplierDTO;
+import bg.softuni.cardealer.domain.dtos.supplier.SupplierImportDTO;
+import bg.softuni.cardealer.domain.dtos.supplier.wrappers.SuppliersWrapperDTO;
 import bg.softuni.cardealer.domain.entities.*;
 import bg.softuni.cardealer.repositories.*;
 import com.google.gson.Gson;
@@ -12,6 +13,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
@@ -43,12 +47,24 @@ public class SeedServiceImpl implements SeedService {
     }
 
     @Override
-    public void seedSuppliers() throws FileNotFoundException {
+    public void seedSuppliers() throws FileNotFoundException, JAXBException {
         if (this.supplierRepository.count() == 0) {
-            FileReader reader = new FileReader(SUPPLIERS_INPUT_PATH.toFile());
+//            FileReader reader = new FileReader(SUPPLIERS_INPUT_PATH.toFile());
+//
+//            List<Supplier> suppliers = Arrays.stream(gson.fromJson(reader, SupplierImportDTO[].class))
+//                    .map(supplierDTO -> modelMapper.map(supplierDTO, Supplier.class)).toList();
 
-            List<Supplier> suppliers = Arrays.stream(gson.fromJson(reader, SupplierDTO[].class))
-                    .map(supplierDTO -> modelMapper.map(supplierDTO, Supplier.class)).toList();
+            FileReader reader = new FileReader(SUPPLIERS_INPUT_XML_PATH.toFile());
+
+            JAXBContext context = JAXBContext.newInstance(SuppliersWrapperDTO.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+
+            SuppliersWrapperDTO suppliersWrapperDTO = (SuppliersWrapperDTO) unmarshaller.unmarshal(reader);
+
+            List<Supplier> suppliers = suppliersWrapperDTO.getSuppliers()
+                    .stream()
+                    .map(supplierImportDTO -> modelMapper.map(supplierImportDTO, Supplier.class))
+                    .toList();
 
             this.supplierRepository.saveAllAndFlush(suppliers);
         }
