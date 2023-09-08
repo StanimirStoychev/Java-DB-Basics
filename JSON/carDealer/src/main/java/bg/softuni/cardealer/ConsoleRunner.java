@@ -32,7 +32,7 @@ public class ConsoleRunner implements CommandLineRunner {
 //        this.seedService.seedAll();
 //        this.customerService.writeOrderedCustomers();
 //        this.carService.getAllToyotaCarsOrdered();
-//        this.supplierService.getAllSuppliersWhoNotImport();
+        this.supplierService.getAllSuppliersWhoNotImport();
 //        this.carService.getAllCarsWithParts();
 
 

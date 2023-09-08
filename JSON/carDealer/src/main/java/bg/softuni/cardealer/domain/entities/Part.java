@@ -1,9 +1,6 @@
 package bg.softuni.cardealer.domain.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,7 +27,7 @@ public class Part extends BaseEntity {
     @Column
     private Long quantity;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Supplier.class)
     @Fetch(FetchMode.JOIN)
     private Supplier supplier;
 }
