@@ -19,11 +19,17 @@ public class Config {
         Converter<String, LocalDateTime> localDateTimeConverter = context -> LocalDateTime.parse(context.getSource());
         modelMapper.addConverter(localDateTimeConverter, String.class, LocalDateTime.class);
 
+        Converter<LocalDateTime, String> dateToStringConverter = context -> String.valueOf(context.getSource());
+        modelMapper.addConverter(dateToStringConverter, LocalDateTime.class, String.class);
+
         return modelMapper;
     }
 
     @Bean
     public Gson createGson() {
-        return new GsonBuilder().setPrettyPrinting().create();
+        return new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
     }
 }
+

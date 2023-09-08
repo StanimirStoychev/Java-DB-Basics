@@ -20,6 +20,6 @@ public interface SeedService {
         seedParts();
         seedCars();
         seedCustomers();
-//        seedSales();
+        seedSales();
     }
 }

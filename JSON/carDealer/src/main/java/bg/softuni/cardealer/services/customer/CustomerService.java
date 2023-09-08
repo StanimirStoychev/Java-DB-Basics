@@ -1,12 +1,12 @@
 package bg.softuni.cardealer.services.customer;
 
 import bg.softuni.cardealer.domain.dtos.customer.CustomerFullInfoDTO;
-import bg.softuni.cardealer.domain.entities.Customer;
 
+import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.util.List;
 
 public interface CustomerService {
 
-    List<CustomerFullInfoDTO> getOrderedCustomers() throws IOException;
+    List<CustomerFullInfoDTO> writeOrderedCustomers() throws IOException, JAXBException;
 }

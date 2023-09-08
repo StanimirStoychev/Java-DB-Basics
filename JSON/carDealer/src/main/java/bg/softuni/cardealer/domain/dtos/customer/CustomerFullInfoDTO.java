@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
 
@@ -18,7 +19,7 @@ public class CustomerFullInfoDTO {
 
     private String name;
 
-    private LocalDateTime birthDate;
+    private String birthDate;
 
     private Boolean isYoungDriver;
 

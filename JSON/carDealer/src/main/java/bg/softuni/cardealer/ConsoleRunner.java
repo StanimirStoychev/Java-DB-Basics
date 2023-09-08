@@ -29,8 +29,8 @@ public class ConsoleRunner implements CommandLineRunner {
     @Transactional
     public void run(String... args) throws Exception {
 
-        this.seedService.seedAll();
-//        this.customerService.getOrderedCustomers();
+//        this.seedService.seedAll();
+//        this.customerService.writeOrderedCustomers();
 //        this.carService.getAllToyotaCarsOrdered();
 //        this.supplierService.getAllSuppliersWhoNotImport();
 //        this.carService.getAllCarsWithParts();

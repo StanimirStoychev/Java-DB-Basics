@@ -186,13 +186,13 @@ public class SeedServiceImpl implements SeedService {
 
             final Random random = new Random();
 
-            for (int i = 0; i < 50; i++) {
+            for (int i = 0; i < 30; i++) {
                 Car car = this.carRepository.getRandomEntity();
                 Customer customer = this.customerRepository.getRandomEntity();
                 int discount = random.nextInt(1, 11) * 5;
 
                 Sale sale = new Sale(car, customer, discount);
-
+                
                 this.saleRepository.saveAndFlush(sale);
             }
         }

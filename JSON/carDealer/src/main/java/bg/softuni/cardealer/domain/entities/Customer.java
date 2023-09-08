@@ -22,7 +22,7 @@ public class Customer extends BaseEntity {
     private String name;
 
     @Column(name = "date_of_birth")
-    private LocalDateTime birthDate;
+    private String birthDate;
 
     @Column(name = "is_young_driver")
     private Boolean isYoungDriver;
