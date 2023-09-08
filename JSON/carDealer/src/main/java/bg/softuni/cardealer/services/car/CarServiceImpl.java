@@ -2,6 +2,7 @@ package bg.softuni.cardealer.services.car;
 
 import bg.softuni.cardealer.domain.dtos.car.CarDTO;
 import bg.softuni.cardealer.domain.dtos.car.CarInfoWithoutPartsDTO;
+import bg.softuni.cardealer.domain.dtos.car.wrappers.CarsExportWrapperDTO;
 import bg.softuni.cardealer.domain.dtos.car.wrappers.CarsWrapperDTO;
 import bg.softuni.cardealer.repositories.CarRepository;
 import org.modelmapper.ModelMapper;
@@ -55,7 +56,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<CarDTO> getAllCarsWithParts() throws IOException {
+    public List<CarDTO> getAllCarsWithParts() throws IOException, JAXBException {
         List<CarDTO> cars = this.carRepository.findAllByIdGreaterThan(0L)
                 .orElseThrow(NoSuchElementException::new)
                 .stream()
@@ -63,6 +64,16 @@ public class CarServiceImpl implements CarService {
                 .toList();
 
         writeIntoJsonFile(cars, CARS_AND_PARTS_OUTPUT);
+
+        CarsExportWrapperDTO carExportWrapperDTO = new CarsExportWrapperDTO(cars);
+
+        JAXBContext context = JAXBContext.newInstance(CarsExportWrapperDTO.class);
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+        FileWriter writer = new FileWriter(CARS_AND_PARTS_XML_OUTPUT.toFile());
+
+        marshaller.marshal(carExportWrapperDTO, writer);
 
         return cars;
     }

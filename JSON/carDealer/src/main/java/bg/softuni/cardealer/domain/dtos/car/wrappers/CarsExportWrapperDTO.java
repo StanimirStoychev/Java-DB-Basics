@@ -1,5 +1,6 @@
-package bg.softuni.cardealer.domain.dtos.part;
+package bg.softuni.cardealer.domain.dtos.car.wrappers;
 
+import bg.softuni.cardealer.domain.dtos.car.CarDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,21 +8,18 @@ import lombok.Setter;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@XmlRootElement(name = "part")
+@XmlRootElement(name = "cars")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class PartWithNameAndPriceDTO {
+public class CarsExportWrapperDTO {
 
-    @XmlAttribute
-    private String name;
-
-    @XmlAttribute
-    private BigDecimal price;
+    @XmlElement(name = "car")
+    private List<CarDTO> cars;
 }

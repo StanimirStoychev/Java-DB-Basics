@@ -11,5 +11,5 @@ public interface CarService {
 
     List<CarInfoWithoutPartsDTO> getAllToyotaCarsOrdered() throws IOException, JAXBException;
 
-    List<CarDTO> getAllCarsWithParts() throws IOException;
+    List<CarDTO> getAllCarsWithParts() throws IOException, JAXBException;
 }
