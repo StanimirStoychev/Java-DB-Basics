@@ -1,4 +1,4 @@
-package com.example.football.models.dto;
+package com.example.football.models.dto.team;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

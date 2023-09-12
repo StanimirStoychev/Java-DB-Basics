@@ -1,6 +1,6 @@
 package com.example.football.service.impl;
 
-import com.example.football.models.dto.TownImportDTO;
+import com.example.football.models.dto.town.TownImportDTO;
 import com.example.football.models.entity.Town;
 import com.example.football.repository.TownRepository;
 import com.example.football.service.TownService;

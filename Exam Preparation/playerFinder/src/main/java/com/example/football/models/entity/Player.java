@@ -4,10 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Getter
@@ -17,14 +15,19 @@ import java.time.LocalDate;
 @Table(name = "players")
 public class Player extends BaseEntity {
 
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(name = "birth_date")
     private LocalDate birthDate;
 
+    @Column
     private Position position;
 
     @ManyToOne

@@ -1,31 +1,22 @@
-package com.example.football.models.dto;
+package com.example.football.models.dto.player;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.Positive;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@XmlRootElement(name = "stat")
+@XmlRootElement(name = "players")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class StatImportDTO {
+public class PlayersWrapperDTO {
 
-    @XmlElement
-    @Positive
-    private float passing;
-
-    @XmlElement
-    @Positive
-    private float shooting;
-
-    @XmlElement
-    @Positive
-    private float endurance;
+    @XmlElement(name = "player")
+    private List<PlayerImportDTO> players;
 }

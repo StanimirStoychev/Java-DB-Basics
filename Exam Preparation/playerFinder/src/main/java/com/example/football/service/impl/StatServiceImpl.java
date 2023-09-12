@@ -1,7 +1,7 @@
 package com.example.football.service.impl;
 
-import com.example.football.models.dto.StatImportDTO;
-import com.example.football.models.dto.StatsWrapperDTO;
+import com.example.football.models.dto.stat.StatImportDTO;
+import com.example.football.models.dto.stat.StatsWrapperDTO;
 import com.example.football.models.entity.Stat;
 import com.example.football.repository.StatRepository;
 import com.example.football.service.StatService;
