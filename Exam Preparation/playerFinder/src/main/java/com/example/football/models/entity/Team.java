@@ -22,7 +22,7 @@ public class Team extends BaseEntity {
     @Column(name = "stadium_name", nullable = false)
     private String stadiumName;
 
-    @Column(nullable = false)
+    @Column(name = "fan_base", nullable = false)
     private Long fanBase;
 
     @Column(nullable = false, columnDefinition = "TEXT")
