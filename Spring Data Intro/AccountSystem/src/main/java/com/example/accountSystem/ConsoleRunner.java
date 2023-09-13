@@ -1,11 +1,12 @@
-package com.example;
+package com.example.accountSystem;
 
-import com.example.entities.Account;
-import com.example.entities.User;
-import com.example.services.AccountService;
-import com.example.services.UserService;
+import com.example.accountSystem.entities.Account;
+import com.example.accountSystem.entities.User;
+import com.example.accountSystem.services.AccountService;
+import com.example.accountSystem.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -27,11 +28,11 @@ public class ConsoleRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        User user = new User("Goshox        ", 20);
 
         Account account = new Account();
         account.setBalance(new BigDecimal("25000"));
 
+        User user = new User("Gosho", 20);
         user.setAccounts(new HashSet<>() {{
             add(account);
         }});

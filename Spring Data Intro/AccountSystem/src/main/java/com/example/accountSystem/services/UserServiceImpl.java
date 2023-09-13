@@ -1,7 +1,7 @@
-package com.example.services;
+package com.example.accountSystem.services;
 
-import com.example.entities.User;
-import com.example.repositories.UserRepository;
+import com.example.accountSystem.repositories.UserRepository;
+import com.example.accountSystem.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

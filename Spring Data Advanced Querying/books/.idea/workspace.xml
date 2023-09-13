@@ -51,6 +51,7 @@
       <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/files/authors.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/files/books.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Skeleton/target/classes/files/categories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/AccountSystemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/AccountSystemApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/ConsoleRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Data Intro/AccountSystem/src/main/java/com/example/accountSystem/ConsoleRunner.java" afterDir="false" />
@@ -74,14 +75,21 @@
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
       <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
         <entry key="com.haulmont.jpb.jpaStructure" value="true" />
       </map>
     </option>
     <option name="myId2Visible">
       <map>
-        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -96,14 +104,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Stanimir/Desktop/SoftUni/Java DB Basic/Java-DB-Basics/Spring Data Advanced Querying/books"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Stanimir/Desktop/SoftUni/Java DB Basic/Java-DB-Basics/Spring Data Advanced Querying/books&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="SpringintroApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="books" />
@@ -122,7 +131,8 @@
       <option name="presentableId" value="Default" />
       <updated>1692185753592</updated>
       <workItem from="1692185755266" duration="111000" />
-      <workItem from="1692198021248" duration="604000" />
+      <workItem from="1692198021248" duration="1558000" />
+      <workItem from="1692599487824" duration="97000" />
     </task>
     <servers />
   </component>

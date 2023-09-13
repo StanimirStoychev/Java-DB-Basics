@@ -1,4 +1,4 @@
-package com.example.entities;
+package com.example.accountSystem.entities;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "users")
-@MappedSuperclass
 public class User {
 
     @Id
@@ -22,7 +21,7 @@ public class User {
     @Column
     private int age;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<Account> accounts;
 
     public User() {

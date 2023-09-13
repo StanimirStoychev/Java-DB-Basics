@@ -1,6 +1,6 @@
-package com.example.services;
+package com.example.accountSystem.services;
 
-import com.example.entities.User;
+import com.example.accountSystem.entities.User;
 
 public interface UserService {
 

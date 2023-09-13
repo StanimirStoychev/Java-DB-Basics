@@ -1,11 +1,10 @@
-package com.example.entities;
+package com.example.accountSystem.entities;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "accounts")
-@MappedSuperclass
 public class Account {
 
     @Id
@@ -16,7 +15,7 @@ public class Account {
     @Column(nullable = false)
     private BigDecimal balance;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
     public void setId(long id) {
