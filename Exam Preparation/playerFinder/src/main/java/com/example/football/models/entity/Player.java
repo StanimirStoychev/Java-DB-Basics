@@ -38,4 +38,13 @@ public class Player extends BaseEntity {
 
     @OneToOne
     private Stat stat;
+
+    @Override
+    public String toString() {
+        return String.format("Player - %s %s%n" +
+                "   Position - %s%n" +
+                "   Team - %s%n" +
+                "   Stadium - %s%n",
+                firstName, lastName, position.toString(), team.getName(), team.getStadiumName());
+    }
 }

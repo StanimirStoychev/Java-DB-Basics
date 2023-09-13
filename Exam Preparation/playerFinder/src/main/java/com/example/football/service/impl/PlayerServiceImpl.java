@@ -22,7 +22,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static com.example.football.constants.Messages.*;
@@ -107,6 +109,17 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public String exportBestPlayers() {
-        return null;
+        StringBuilder sb = new StringBuilder();
+
+        LocalDate after = LocalDate.of(1995, 1, 1);
+        LocalDate before = LocalDate.of(2003, 1, 1);
+
+        List<Player> players = this.playerRepository
+                .findAllByBirthDateAfterAndBirthDateBeforeOrderByStatShootingDescStatPassingDescStatEnduranceDescLastName(after, before)
+                .orElseThrow(NoSuchElementException::new);
+
+        players.forEach(sb::append);
+
+        return sb.toString();
     }
 }
