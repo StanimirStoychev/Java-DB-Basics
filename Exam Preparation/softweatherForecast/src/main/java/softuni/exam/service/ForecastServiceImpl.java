@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import softuni.exam.models.dto.forecast.ForecastImportDTO;
 import softuni.exam.models.dto.forecast.ForecastsWrapperDTO;
 import softuni.exam.models.entity.City;
+import softuni.exam.models.entity.DayOfWeek;
 import softuni.exam.models.entity.Forecast;
 import softuni.exam.repository.CityRepository;
 import softuni.exam.repository.ForecastRepository;
@@ -18,6 +19,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static softuni.exam.constants.Messages.*;
@@ -89,6 +91,16 @@ public class ForecastServiceImpl implements ForecastService {
 
     @Override
     public String exportForecasts() {
-        return null;
+        StringBuilder sb = new StringBuilder();
+
+        final DayOfWeek dayOfWeek = DayOfWeek.SUNDAY;
+        int population = 150000;
+
+        this.forecastRepository
+                .findAllByDayOfWeekAndCityPopulationLessThanOrderByMaxTemperatureDescId(dayOfWeek, population)
+                .orElseThrow(NoSuchElementException::new)
+                .forEach(sb::append);
+
+        return sb.toString();
     }
 }
