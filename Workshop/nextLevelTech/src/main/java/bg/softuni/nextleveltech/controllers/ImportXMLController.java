@@ -55,4 +55,20 @@ public class ImportXMLController {
 
         return "redirect:/import/xml";
     }
+
+    @GetMapping("import/projects")
+    public String viewProjects(Model model) throws IOException {
+        String xmlContent = this.projectService.getXMLContent();
+
+        model.addAttribute("projects", xmlContent);
+
+        return "xml/import-projects";
+    }
+
+    @PostMapping("import/projects")
+    public String importProjects() throws JAXBException, FileNotFoundException {
+        this.projectService.importProjects();
+
+        return "redirect:/import/xml";
+    }
 }

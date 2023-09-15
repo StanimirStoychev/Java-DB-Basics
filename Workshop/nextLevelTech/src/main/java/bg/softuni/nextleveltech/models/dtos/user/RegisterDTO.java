@@ -1,5 +1,6 @@
 package bg.softuni.nextleveltech.models.dtos.user;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 public class RegisterDTO {
@@ -14,6 +15,7 @@ public class RegisterDTO {
     private String confirmPassword;
 
     @NotNull
+    @Email
     private String email;
 
     public RegisterDTO() {}
