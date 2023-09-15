@@ -1,7 +1,6 @@
 package bg.softuni.nextleveltech.models.entities;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 

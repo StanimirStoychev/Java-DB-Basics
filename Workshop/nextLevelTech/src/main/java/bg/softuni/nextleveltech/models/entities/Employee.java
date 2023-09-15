@@ -1,6 +1,6 @@
 package bg.softuni.nextleveltech.models.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "employees")
