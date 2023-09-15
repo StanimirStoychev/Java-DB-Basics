@@ -1,6 +1,7 @@
 package bg.softuni.nextleveltech.controllers;
 
 import bg.softuni.nextleveltech.models.dtos.user.LoginDTO;
+import bg.softuni.nextleveltech.models.dtos.user.RegisterDTO;
 import bg.softuni.nextleveltech.models.entities.User;
 import bg.softuni.nextleveltech.services.UserService;
 import org.springframework.stereotype.Controller;
@@ -32,5 +33,18 @@ public class UserController {
         }
 
         return "user/login";
+    }
+
+    @GetMapping("/users/register")
+    public String register() {
+        return "user/register";
+    }
+
+    @PostMapping("/users/register")
+    public String doRegister(RegisterDTO registerDTO) {
+        if (userService.register(registerDTO)) {
+            return "redirect:/users/login";
+        }
+        return "user/register";
     }
 }
