@@ -16,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.stream.Collectors;
 
 import static bg.softuni.nextleveltech.constants.Paths.PROJECTS_PATH;
 
@@ -59,5 +60,12 @@ public class ProjectService {
                     project.setCompany(company);
                     return project;
                 }).forEach(this.projectRepository::saveAndFlush);
+    }
+
+    public String exportFinishedProjects() {
+        return this.projectRepository.findByIsFinishedTrue().get()
+                .stream()
+                .map(Project::toString)
+                .collect(Collectors.joining(System.lineSeparator()));
     }
 }

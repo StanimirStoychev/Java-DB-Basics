@@ -18,6 +18,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.stream.Collectors;
 
 import static bg.softuni.nextleveltech.constants.Paths.EMPLOYEES_PATH;
 
@@ -67,5 +68,12 @@ public class EmployeeService {
                     employee.getProject().setCompany(company);
                     return employee;
                 }).forEach(this.employeeRepository::saveAndFlush);
+    }
+
+    public String exportEmployeesWithAgeAbove25() {
+        return this.employeeRepository.findAllByAgeGreaterThan((byte) 25).get()
+                .stream()
+                .map(Employee::toString)
+                .collect(Collectors.joining(System.lineSeparator()));
     }
 }

@@ -63,4 +63,16 @@ public class Employee {
     public void setProject(Project project) {
         this.project = project;
     }
+
+    public String getFullName() {
+        return getFirstName() + " " + getLastName();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Name: %s%n" +
+                "Age: %d%n" +
+                "Project name: %s%n" +
+                "--------------------", getFullName(), getAge(), getProject().getName());
+    }
 }

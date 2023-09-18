@@ -87,4 +87,15 @@ public class Project {
     public void setCompany(Company company) {
         this.company = company;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Name: %s%n" +
+                "Description: %s%n" +
+                "Payment: %.2f%n" +
+                "Start date: %s%n" +
+                "Company name: %s%n" +
+                        "--------------------", getName(), getDescription(), getPayment(),
+                getStartDate().toString(), getCompany().getName());
+    }
 }
