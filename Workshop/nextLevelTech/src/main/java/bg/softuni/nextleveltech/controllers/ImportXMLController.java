@@ -71,4 +71,20 @@ public class ImportXMLController {
 
         return "redirect:/import/xml";
     }
+
+    @GetMapping("import/employees")
+    public String viewEmployees(Model model) throws IOException {
+        String xmlContent = this.employeeService.getXMLContent();
+
+        model.addAttribute("employees", xmlContent);
+
+        return "xml/import-employees";
+    }
+
+    @PostMapping("import/employees")
+    public String importEmployees() throws JAXBException, FileNotFoundException {
+        this.employeeService.importEmployees();
+
+        return "redirect:/import/xml";
+    }
 }
